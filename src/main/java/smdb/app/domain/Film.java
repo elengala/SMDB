@@ -1,4 +1,5 @@
 package smdb.app.domain;
+import smdb.app.domain.Actor;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,12 +23,12 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 //@JsonFilter("product_filter")
 @Entity
-@Table(name = "FILMS", indexes = {@Index(columnList = "serial")})
+@Table(name = "FILMS", indexes = {@Index(columnList = "title")})
 @SequenceGenerator(name = "idGenerator", sequenceName = "FILMS_SEQ", initialValue = 1, allocationSize = 1)
 public class Film extends BaseEntity {
     //@NotNull
-    @Column(length = 30, nullable = false, unique = true)
-    private String serial;
+//    @Column(length = 30, nullable = false, unique = true)
+//    private String serial;
 
     //@NotNull
     @Column(length = 50, nullable = false)
@@ -39,9 +40,9 @@ public class Film extends BaseEntity {
 
 
     @JsonManagedReference("actors")
-    @JsonBackReference("actors")
+    //@JsonBackReference("actors")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "film")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true, mappedBy = "lastname")
     private final Set<Actor> actors = new HashSet<>();
 }

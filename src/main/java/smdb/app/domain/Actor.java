@@ -36,10 +36,10 @@ public class Actor  extends BaseEntity {
     private Integer age;
 
     @JsonManagedReference("films")
-    @JsonBackReference("films")
+    //@JsonBackReference("films")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "actor")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "title")
     private final Set<Film> films = new HashSet<>();
 
     public String getlastname() {

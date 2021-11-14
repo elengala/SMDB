@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import smdb.app.domain.Actor;
 import smdb.app.service.BaseService;
 import smdb.app.service.ActorService;
-//import smdb.app.transfer.ApiResponse;
+import smdb.app.transfer.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +31,16 @@ public class ActorController extends AbstractController<Actor> {
     public BaseService<Actor, Long> getBaseService() {
         return actorService;
     }
+/*    @Override
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<Actor>>> findAll() {
+        return ResponseEntity.ok(ApiResponse.<List<Actor>>builder().data(getBaseService().findAll()).build());
+    }*/
+/*    @GetMapping("/actors")
+    public ResponseEntity<ApiResponse<List<Actor>>> findAll() {
+        List<Actor> all = actorService.findAll();
+        return ResponseEntity.ok(ApiResponse.<JsonNode>builder().data(all).build());
+    }*/
 
 /*    @GetMapping(params = "lastname")
     public ResponseEntity<ApiResponse<Actor>> findBySerial(@RequestParam("serial") String lastname) {

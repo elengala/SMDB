@@ -7,6 +7,7 @@ public interface FilmService extends BaseService<Film, Long> {
 
     Film initiateFilm();
     void addActor(Film film, Actor actor);
+    Film saveFilm(Film film);
 
     Film findByTitle(String title);
 }
